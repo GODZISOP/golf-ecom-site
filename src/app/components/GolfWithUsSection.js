@@ -33,7 +33,7 @@ export default function GolfWithUsSection() {
         </div>
 
         {/* Video Feature Community Hero Banner */}
-        <div className="relative rounded-3xl overflow-hidden border border-[#E8A246]/40 shadow-2xl mb-16 min-h-[420px] flex items-center">
+        <div className="relative rounded-3xl overflow-hidden border border-[#E8A246]/40 shadow-2xl mb-16 min-h-[460px] sm:min-h-[420px] flex items-center">
           <div className="absolute inset-0 z-0">
             <video
               src="/media/hero-video-2.mp4"
@@ -43,25 +43,26 @@ export default function GolfWithUsSection() {
               playsInline
               className="w-full h-full object-cover filter brightness-90"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#081B12] via-[#081B12]/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-[#081B12] via-[#081B12]/85 to-[#081B12]/40" />
           </div>
 
-          <div className="relative z-10 p-8 sm:p-14 max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-[#E8A246] text-[#081B12] text-[10px] font-black uppercase tracking-widest px-3.5 py-1 rounded-full mb-6 shadow">
+          <div className="relative z-10 p-6 sm:p-12 md:p-14 max-w-2xl w-full">
+            <div className="inline-flex items-center gap-2 bg-[#E8A246] text-[#081B12] text-[10px] font-black uppercase tracking-widest px-3.5 py-1 rounded-full mb-4 sm:mb-6 shadow">
               <Users className="w-3.5 h-3.5" />
               JOIN THE THREE OFF THE TEE FAMILY
             </div>
 
-            <h3 className="font-serif text-3xl sm:text-5xl font-extrabold text-white mb-4 leading-tight">
-              EVERYDAY GOLFERS. REAL STORIES. GOOD TIMES.
+            <h3 className="font-serif text-2xl sm:text-4xl md:text-5xl font-extrabold text-white mb-3 sm:mb-4 leading-tight">
+              EVERYDAY GOLFERS. <br className="hidden sm:inline" />
+              REAL STORIES. GOOD TIMES.
             </h3>
-            <p className="text-gray-300 text-sm leading-relaxed mb-6 font-light">
+            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6 font-light">
               Whether you shoot 72 or 105, drink a beer on the back nine, or play with your son on Sunday — you belong here.
             </p>
 
             <a
               href="#register"
-              className="inline-block bg-[#E8A246] hover:bg-[#F2B35D] text-[#081B12] font-black text-xs tracking-widest uppercase px-8 py-3.5 rounded-full transition-all shadow-lg shadow-[#E8A246]/30"
+              className="inline-block bg-[#E8A246] hover:bg-[#F2B35D] text-[#081B12] font-black text-[11px] sm:text-xs tracking-wider uppercase px-5 py-2.5 sm:px-7 sm:py-3 rounded-full transition-all shadow-md shadow-[#E8A246]/30"
             >
               GET INVITED TO COMMUNITY ROUNDS
             </a>
