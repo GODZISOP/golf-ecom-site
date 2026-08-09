@@ -43,14 +43,14 @@ export default function ValuesGrid() {
   ];
 
   return (
-    <section id="mission" className="py-24 bg-gradient-to-b from-[#081B12] via-[#0B2519]/70 to-[#081B12] text-white border-y border-white/5">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="mission" className="py-16 sm:py-24 bg-gradient-to-b from-[#081B12] via-[#0B2519]/70 to-[#081B12] text-white border-y border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <span className="text-[#E8A246] text-xs font-bold uppercase tracking-[0.3em]">
             THE FOUNDATION
           </span>
-          <h2 className="font-serif text-4xl sm:text-6xl font-black text-white mt-3 mb-6 uppercase">
+          <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-black text-white mt-3 mb-6 uppercase leading-tight">
             WHAT WE <span className="text-[#E8A246] font-serif italic">STAND FOR</span>
           </h2>
           <p className="text-gray-300 text-sm md:text-base leading-relaxed font-light">

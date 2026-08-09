@@ -4,77 +4,77 @@ export default function StrategicSection() {
   const leftStats = [
     {
       number: "18",
-      label: "holes",
+      label: "holes demanding focus",
       description:
-        "A championship course where every distance demands precision and tactical thinking.",
+        "A championship fairway where every shot is an opportunity to reset, reload, and enjoy the game.",
     },
     {
-      number: "120",
-      label: "residents",
+      number: "100%",
+      label: "everyday golfers",
       description:
-        "A select membership modern structure designed for an elite community.",
+        "Built for scratch players, weekend scramblers, firefighters, and golfers shooting 105.",
     },
     {
-      number: "2,500 m²",
-      label: "clubhouse",
+      number: "365",
+      label: "days of mulligans",
       description:
-        "A refined space designed for meetings, strategic network, and private events.",
+        "Permission to reload. Life doesn’t give you a perfect first shot, and neither does golf.",
     },
   ];
 
   const rightStats = [
     {
-      number: "365",
-      label: "days of access",
+      number: "2nd",
+      label: "chances on the tee",
       description:
-        "The club operates year-round — our passion is not seasonal.",
+        "Your first swing doesn’t define the hole — and your worst shot doesn’t define your life.",
     },
     {
-      number: "6",
-      label: "guests per month",
+      number: "#1",
+      label: "community mission",
       description:
-        "Invite partners and clients into an environment of status.",
+        "Bringing people together through golf while supporting firefighter & charity causes.",
     },
     {
-      number: "1",
-      label: "clear direction",
+      number: "0",
+      label: "excuses needed",
       description:
-        "A community of entrepreneurs and investors focused on long-term growth.",
+        "Take the drop. Reload. Keep swinging forward with great people and cold drinks.",
     },
   ];
 
   return (
-    <section className="relative w-full py-24 md:py-32 overflow-hidden bg-[#06150D] text-white">
-      {/* Background Image - Reverted to golf-hero-2.png */}
+    <section className="relative w-full py-16 sm:py-24 md:py-32 overflow-hidden bg-[#081B12] text-white">
+      {/* Background Image - golf-hero-2.png */}
       <div className="absolute inset-0 z-0">
         <img
           src="/media/golf-hero-2.png"
           alt="Strategic Environment Course"
           className="w-full h-full object-cover object-center scale-100"
         />
-        {/* Subtle Dark Vignette at top & bottom for smooth transitions */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#06150D] via-transparent to-[#06150D] opacity-75" />
+        {/* Dark Vignette Overlay for smooth readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#081B12] via-black/50 to-[#081B12] opacity-85" />
 
         {/* Minimal Grid Overlay */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:32px_32px] pointer-events-none" />
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#E8A246_1px,transparent_1px)] [background-size:32px_32px] pointer-events-none" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* Giant Serif Title Matching Reference Image */}
-        <h2 className="font-serif text-5xl sm:text-7xl md:text-8xl font-normal text-white text-center md:text-left tracking-tight mb-16 md:mb-20 drop-shadow-2xl">
-          Strategic Environment
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+        {/* Section Title */}
+        <h2 className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white text-center md:text-left tracking-tight mb-10 sm:mb-16 md:mb-20 drop-shadow-2xl uppercase leading-none break-words">
+          Strategic <span className="text-[#E8A246] font-serif italic">Environment</span>
         </h2>
 
-        {/* Main Content Layout */}
-        <div className="relative grid grid-cols-1 md:grid-cols-3 items-center gap-12 lg:gap-16">
+        {/* Main Content Layout - 100% Responsive Grid */}
+        <div className="relative grid grid-cols-1 md:grid-cols-3 items-center gap-10 sm:gap-12 lg:gap-16">
           {/* Left Column Stats */}
-          <div className="space-y-10 md:space-y-12 text-center md:text-left z-20">
+          <div className="space-y-8 sm:space-y-10 md:space-y-12 text-center md:text-left z-20">
             {leftStats.map((stat, i) => (
               <div key={i} className="group relative">
-                <div className="font-serif text-4xl sm:text-5xl font-extrabold text-white group-hover:text-[#D4AF37] transition-colors leading-none drop-shadow">
+                <div className="font-serif text-4xl sm:text-5xl font-extrabold text-[#E8A246] group-hover:text-white transition-colors leading-none drop-shadow-lg">
                   {stat.number}
                 </div>
-                <div className="text-sm font-light text-gray-200 tracking-wider lowercase mt-1 mb-2">
+                <div className="text-xs sm:text-sm font-semibold text-gray-200 tracking-wider uppercase mt-1 mb-2">
                   {stat.label}
                 </div>
                 <p className="text-xs text-gray-300 font-light max-w-xs mx-auto md:mx-0 leading-relaxed drop-shadow">
@@ -84,28 +84,28 @@ export default function StrategicSection() {
             ))}
           </div>
 
-          {/* Center Column - Transparent Focus Ring framing the Ball in golf-hero-2.png */}
-          <div className="relative flex items-center justify-center py-8 z-20 pointer-events-none">
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full border-2 border-[#D4AF37]/60 flex items-center justify-center p-3 shadow-[0_0_40px_rgba(212,175,55,0.3)]">
+          {/* Center Column - Responsive Focus Ring */}
+          <div className="relative flex items-center justify-center py-4 sm:py-6 md:py-8 z-20 pointer-events-none md:-mt-20 lg:-mt-28">
+            <div className="relative w-52 h-52 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full border-2 border-[#E8A246]/70 flex items-center justify-center p-2.5 sm:p-3 shadow-[0_0_50px_rgba(232,162,70,0.4)]">
               {/* Inner Transparent Focus Ring */}
-              <div className="w-full h-full rounded-full border border-white/40 flex items-center justify-center bg-white/5 backdrop-blur-[1px]" />
+              <div className="w-full h-full rounded-full border border-white/50 flex items-center justify-center bg-white/5 backdrop-blur-[1px]" />
 
-              {/* Tactical Pointer Lines */}
-              <div className="hidden lg:block absolute top-1/2 -left-16 w-16 h-px bg-gradient-to-r from-transparent to-[#D4AF37]" />
-              <div className="hidden lg:block absolute top-1/2 -right-16 w-16 h-px bg-gradient-to-l from-transparent to-[#D4AF37]" />
-              <div className="hidden lg:block absolute -top-10 left-1/2 w-px h-10 bg-gradient-to-b from-transparent to-[#D4AF37]" />
-              <div className="hidden lg:block absolute -bottom-10 left-1/2 w-px h-10 bg-gradient-to-t from-transparent to-[#D4AF37]" />
+              {/* Tactical Crosshair Pointer Lines */}
+              <div className="hidden lg:block absolute top-1/2 -left-16 w-16 h-px bg-gradient-to-r from-transparent to-[#E8A246]" />
+              <div className="hidden lg:block absolute top-1/2 -right-16 w-16 h-px bg-gradient-to-l from-transparent to-[#E8A246]" />
+              <div className="hidden lg:block absolute -top-10 left-1/2 w-px h-10 bg-gradient-to-b from-transparent to-[#E8A246]" />
+              <div className="hidden lg:block absolute -bottom-10 left-1/2 w-px h-10 bg-gradient-to-t from-transparent to-[#E8A246]" />
             </div>
           </div>
 
           {/* Right Column Stats */}
-          <div className="space-y-10 md:space-y-12 text-center md:text-right z-20">
+          <div className="space-y-8 sm:space-y-10 md:space-y-12 text-center md:text-right z-20">
             {rightStats.map((stat, i) => (
               <div key={i} className="group relative">
-                <div className="font-serif text-4xl sm:text-5xl font-extrabold text-white group-hover:text-[#D4AF37] transition-colors leading-none drop-shadow">
+                <div className="font-serif text-4xl sm:text-5xl font-extrabold text-[#E8A246] group-hover:text-white transition-colors leading-none drop-shadow-lg">
                   {stat.number}
                 </div>
-                <div className="text-sm font-light text-gray-200 tracking-wider lowercase mt-1 mb-2">
+                <div className="text-xs sm:text-sm font-semibold text-gray-200 tracking-wider uppercase mt-1 mb-2">
                   {stat.label}
                 </div>
                 <p className="text-xs text-gray-300 font-light max-w-xs mx-auto md:ml-auto md:mr-0 leading-relaxed drop-shadow">

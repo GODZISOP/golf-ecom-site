@@ -20,12 +20,12 @@ export default function Navbar({ cartCount = 0, onOpenCart }) {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#081B12]/95 backdrop-blur-md border-b border-[#E8A246]/20 py-4 shadow-2xl"
-            : "bg-gradient-to-b from-black/90 via-black/40 to-transparent py-5"
+            ? "bg-[#081B12]/95 backdrop-blur-md border-b border-[#E8A246]/20 py-3 sm:py-4 shadow-2xl"
+            : "bg-gradient-to-b from-black/90 via-black/50 to-transparent py-3 sm:py-5"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* Left Navigation Links */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3">
+          {/* Left Navigation Links (Desktop only) */}
           <nav className="hidden lg:flex items-center space-x-7 text-xs font-bold tracking-widest uppercase">
             <a href="#story" className="hover:text-[#E8A246] transition-colors">
               OUR STORY
@@ -44,19 +44,21 @@ export default function Navbar({ cartCount = 0, onOpenCart }) {
             </a>
           </nav>
 
-          {/* Centered Brand Logo */}
-          <a href="#" className="flex flex-col items-center group">
-            <span className="font-serif text-xl sm:text-2xl lg:text-3xl font-black tracking-[0.18em] text-[#E8A246] group-hover:text-white transition-colors uppercase">
+          {/* Left / Centered Brand Logo */}
+          <a href="#" className="flex flex-col items-start lg:items-center group min-w-0 flex-1 lg:flex-initial">
+            <span className="font-serif text-lg xs:text-xl sm:text-2xl lg:text-3xl font-black tracking-wider sm:tracking-[0.18em] text-[#E8A246] group-hover:text-white transition-colors uppercase leading-tight">
               THREE OFF THE TEE
             </span>
-            <span className="text-[9px] tracking-[0.3em] text-gray-300 font-sans uppercase font-medium flex items-center gap-1">
-              <Flame className="w-3 h-3 text-[#E8A246]" />
-              FOUNDED BY L.A. COUNTY FIREFIGHTER JAKE RADEN
+            <span className="text-[8.5px] sm:text-[9.5px] tracking-wider sm:tracking-[0.3em] text-gray-300 font-sans uppercase font-medium flex items-center gap-1 leading-none mt-0.5">
+              <Flame className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#E8A246] shrink-0" />
+              <span className="truncate max-w-[170px] xs:max-w-[240px] sm:max-w-none">
+                FOUNDED BY L.A. COUNTY FIREFIGHTER JAKE RADEN
+              </span>
             </span>
           </a>
 
-          {/* Right Navigation & Cart */}
-          <div className="flex items-center space-x-6">
+          {/* Right Navigation & Cart + Mobile Hamburger */}
+          <div className="flex items-center space-x-2.5 sm:space-x-6 shrink-0">
             <button
               aria-label="Search"
               className="hidden sm:flex items-center gap-2 text-xs font-semibold text-gray-300 hover:text-[#E8A246] transition-colors uppercase tracking-wider"
@@ -68,19 +70,20 @@ export default function Navbar({ cartCount = 0, onOpenCart }) {
             {/* Shopping Cart Button */}
             <button
               onClick={onOpenCart}
-              className="relative flex items-center gap-2 bg-[#0B2519] hover:bg-[#14422D] border border-[#E8A246]/40 px-4 py-2 rounded-full transition-all text-xs font-extrabold tracking-wider text-[#E8A246] hover:border-[#E8A246]"
+              className="relative flex items-center gap-1.5 sm:gap-2 bg-[#0B2519] hover:bg-[#14422D] border border-[#E8A246]/40 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full transition-all text-xs font-extrabold tracking-wider text-[#E8A246] hover:border-[#E8A246]"
             >
-              <ShoppingBag className="w-4 h-4" />
+              <ShoppingBag className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
               <span className="hidden sm:inline">CART</span>
-              <span className="bg-[#E8A246] text-[#081B12] text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">
+              <span className="bg-[#E8A246] text-[#081B12] text-[10px] sm:text-[11px] font-black w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full flex items-center justify-center">
                 {cartCount}
               </span>
             </button>
 
-            {/* Mobile Hamburger */}
+            {/* Mobile Hamburger Menu Icon (Right Side) */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden text-gray-200 hover:text-[#E8A246] transition-colors"
+              className="lg:hidden text-gray-200 hover:text-[#E8A246] transition-colors p-1"
+              aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>

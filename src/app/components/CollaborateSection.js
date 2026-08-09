@@ -12,14 +12,14 @@ export default function CollaborateSection() {
   };
 
   return (
-    <section id="collaborate" className="py-24 bg-gradient-to-b from-[#081B12] via-[#0B2519]/80 to-[#081B12] text-white">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <section id="collaborate" className="py-16 sm:py-24 bg-gradient-to-b from-[#081B12] via-[#0B2519]/80 to-[#081B12] text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
         {/* Left Info Column */}
         <div className="lg:col-span-6 space-y-6">
           <span className="text-[#E8A246] text-xs font-bold uppercase tracking-[0.3em]">
             WORK WITH US
           </span>
-          <h2 className="font-serif text-4xl sm:text-6xl font-black text-white leading-tight">
+          <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-black text-white leading-tight">
             PARTNER & COLLABORATE <br />
             <span className="text-[#E8A246] italic font-serif">FOR SOMETHING BIGGER</span>
           </h2>

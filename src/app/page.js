@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
+import StrategicSection from "./components/StrategicSection";
 import MeaningSection from "./components/MeaningSection";
 import OurStorySection from "./components/OurStorySection";
 import ValuesGrid from "./components/ValuesGrid";
@@ -63,20 +64,23 @@ export default function Home() {
       {/* Hero Section */}
       <HeroSection />
 
+      {/* Strategic Environment Section with golf-hero-2.png Background & Focus Ring */}
+      <StrategicSection />
+
       {/* What Three Off the Tee Means */}
       <MeaningSection />
 
       {/* Our Founder Story - LA County Firefighter Jake Raden */}
       <OurStorySection />
 
+      <ShopSection
+        onAddToCart={handleAddToCart}
+        onQuickView={(prod) => setQuickViewProduct(prod)}
+        />
       {/* What We Stand For - 6 Principles */}
       <ValuesGrid />
 
       {/* Shop Apparel & Headwear */}
-      <ShopSection
-        onAddToCart={handleAddToCart}
-        onQuickView={(prod) => setQuickViewProduct(prod)}
-      />
 
       {/* Golf With Us - Community Outings & Events */}
       <GolfWithUsSection />
