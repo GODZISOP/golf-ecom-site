@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Star, ShoppingCart, Eye, ArrowUpDown, ChevronDown } from "lucide-react";
+import Link from "next/link";
+import { Star, ShoppingCart, Eye, ArrowUpDown, ChevronRight } from "lucide-react";
 
 const THREE_OFF_TEE_PRODUCTS = [
   {
@@ -88,26 +89,11 @@ const THREE_OFF_TEE_PRODUCTS = [
     specs: "Laser Perforated Mesh • High Density Embroidery • Firefighter Edition",
     description: "Special L.A. County Fire Dept. Station 16 edition snapback built for California fairways.",
   },
-  {
-    id: "hat-sunset-golden",
-    name: "3 Off the Tee Sunset Hour Snapback",
-    category: "headwear",
-    type: "Hats",
-    price: 36,
-    originalPrice: 42,
-    rating: 4.9,
-    reviews: 75,
-    image: "/media/image.png",
-    badge: "GOLDEN HOUR",
-    specs: "Lifestyle Fit • Breathable Mesh • Classic Patch",
-    description: "Designed for California sunsets, post-round drinks, and casual fairways.",
-  },
 ];
 
 export default function ShopSection({ onAddToCart, onQuickView }) {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortBy, setSortBy] = useState("featured");
-  const [visibleCount, setVisibleCount] = useState(6);
 
   const filteredProducts = THREE_OFF_TEE_PRODUCTS.filter((product) => {
     if (selectedCategory === "all") return true;
@@ -119,21 +105,20 @@ export default function ShopSection({ onAddToCart, onQuickView }) {
     return 0;
   });
 
-  const displayedProducts = filteredProducts.slice(0, visibleCount);
-  const hasMore = visibleCount < filteredProducts.length;
+  const displayedProducts = filteredProducts.slice(0, 6);
 
   return (
-    <section id="shop" className="py-24 px-6 max-w-7xl mx-auto">
+    <section id="shop" className="py-24 px-4 sm:px-6 max-w-7xl mx-auto">
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-[#E8A246]/20 pb-8">
         <div>
           <span className="text-[#E8A246] text-xs font-bold uppercase tracking-[0.3em]">
             CALIFORNIA GOLF APPAREL
           </span>
-          <h2 className="font-serif text-4xl sm:text-5xl font-black text-white mt-2 uppercase">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-black text-white mt-2 uppercase">
             SHOP THE COLLECTION
           </h2>
-          <p className="text-gray-300 text-sm max-w-xl mt-2 font-light">
+          <p className="text-gray-300 text-xs sm:text-sm max-w-xl mt-2 font-light">
             Headwear, polos, and apparel designed to feel premium, casual, and proud to wear on and off the course.
           </p>
         </div>
@@ -143,11 +128,8 @@ export default function ShopSection({ onAddToCart, onQuickView }) {
           {["all", "headwear", "apparel"].map((cat) => (
             <button
               key={cat}
-              onClick={() => {
-                setSelectedCategory(cat);
-                setVisibleCount(6);
-              }}
-              className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all border ${
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-4 sm:px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all border ${
                 selectedCategory === cat
                   ? "bg-[#E8A246] text-[#081B12] border-[#E8A246] shadow-lg shadow-[#E8A246]/20"
                   : "bg-[#0B2519]/60 text-gray-300 border-white/10 hover:border-[#E8A246]"
@@ -160,8 +142,8 @@ export default function ShopSection({ onAddToCart, onQuickView }) {
       </div>
 
       {/* Sorting Bar */}
-      <div className="flex items-center justify-between mb-8 text-xs text-gray-400">
-        <span>Showing {displayedProducts.length} of {filteredProducts.length} items</span>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4 text-xs text-gray-400">
+        <span>Showing {displayedProducts.length} items</span>
         <div className="flex items-center gap-2">
           <ArrowUpDown className="w-3.5 h-3.5 text-[#E8A246]" />
           <span>Sort by:</span>
@@ -179,7 +161,7 @@ export default function ShopSection({ onAddToCart, onQuickView }) {
       </div>
 
       {/* Product Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {displayedProducts.map((product) => (
           <div
             key={product.id}
@@ -217,7 +199,7 @@ export default function ShopSection({ onAddToCart, onQuickView }) {
             </div>
 
             {/* Content Details */}
-            <div className="p-6 flex-1 flex flex-col justify-between">
+            <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between gap-2 text-xs text-gray-400 mb-2">
                   <span className="uppercase tracking-widest text-[#E8A246] font-bold">
@@ -230,7 +212,7 @@ export default function ShopSection({ onAddToCart, onQuickView }) {
                   </div>
                 </div>
 
-                <h3 className="font-serif text-xl font-bold text-white group-hover:text-[#E8A246] transition-colors mb-2">
+                <h3 className="font-serif text-lg sm:text-xl font-bold text-white group-hover:text-[#E8A246] transition-colors mb-2">
                   {product.name}
                 </h3>
                 <p className="text-xs text-gray-300 font-light mb-4 line-clamp-2">{product.specs}</p>
@@ -239,7 +221,7 @@ export default function ShopSection({ onAddToCart, onQuickView }) {
               {/* Price & Add to Cart */}
               <div className="pt-4 border-t border-white/10 flex items-center justify-between mt-4">
                 <div>
-                  <span className="text-2xl font-serif font-black text-[#E8A246]">
+                  <span className="text-xl sm:text-2xl font-serif font-black text-[#E8A246]">
                     ${product.price}
                   </span>
                   {product.originalPrice && (
@@ -251,7 +233,7 @@ export default function ShopSection({ onAddToCart, onQuickView }) {
 
                 <button
                   onClick={() => onAddToCart(product)}
-                  className="bg-[#14422D] hover:bg-[#E8A246] text-white hover:text-black font-extrabold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full transition-all duration-300 flex items-center gap-2 border border-[#E8A246]/30"
+                  className="bg-[#14422D] hover:bg-[#E8A246] text-white hover:text-black font-extrabold text-xs uppercase tracking-wider px-4 sm:px-5 py-2.5 rounded-full transition-all duration-300 flex items-center gap-2 border border-[#E8A246]/30"
                 >
                   <ShoppingCart className="w-4 h-4" />
                   <span>ADD TO CART</span>
@@ -262,18 +244,16 @@ export default function ShopSection({ onAddToCart, onQuickView }) {
         ))}
       </div>
 
-      {/* Shop More Button */}
-      {hasMore && (
-        <div className="mt-14 text-center">
-          <button
-            onClick={() => setVisibleCount((prev) => prev + 6)}
-            className="inline-flex items-center gap-3 bg-[#E8A246] hover:bg-[#d69035] text-[#081B12] font-black text-xs uppercase tracking-[0.2em] px-8 py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-[#E8A246]/25 hover:scale-105 active:scale-95"
-          >
-            <span>SHOP MORE</span>
-            <ChevronDown className="w-4 h-4" />
-          </button>
-        </div>
-      )}
+      {/* Shop More Link to Dedicated /shop Page */}
+      <div className="mt-14 text-center">
+        <Link
+          href="/shop"
+          className="inline-flex items-center gap-3 bg-[#E8A246] hover:bg-[#d69035] text-[#081B12] font-black text-xs uppercase tracking-[0.2em] px-8 py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-[#E8A246]/25 hover:scale-105 active:scale-95"
+        >
+          <span>SHOP MORE PRODUCTS</span>
+          <ChevronRight className="w-4 h-4" />
+        </Link>
+      </div>
     </section>
   );
 }
