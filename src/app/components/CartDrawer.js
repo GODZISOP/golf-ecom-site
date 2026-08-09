@@ -42,8 +42,8 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden bg-black/80 backdrop-blur-sm transition-opacity">
-      <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-[#06150D] border-l border-[#D4AF37]/30 text-white flex flex-col justify-between shadow-2xl">
+      <div className="absolute inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
+        <div className="w-screen w-full sm:max-w-md bg-[#06150D] border-l border-[#D4AF37]/30 text-white flex flex-col justify-between shadow-2xl">
           {/* Header */}
           <div className="p-6 border-b border-white/10 flex items-center justify-between">
             <h2 className="font-serif text-2xl font-bold text-[#D4AF37]">YOUR SHOPPING BAG</h2>
