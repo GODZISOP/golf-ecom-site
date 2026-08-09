@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+:root {
+  --color-fairway: #0B2519;         /* SoCal Fairway Green */
+  --color-sunset-gold: #E8A246;     /* Golden Hour Amber */
+  --color-ocean-navy: #0D1F2D;      /* Pacific Navy */
+  --color-warm-sand: #F7F5F0;       /* Off-White Sand */
+  --color-card-bg: rgba(11, 37, 25, 0.85);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: #081B12;
+    color: #F7F5F0;
+    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Glassmorphism & SoCal Aesthetics */
+.glass-socal {
+  background: rgba(11, 37, 25, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(232, 162, 70, 0.25);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFFDF8 0%, #E8A246 60%, #C47F24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sunset-badge {
+  background: linear-gradient(135deg, #E8A246 0%, #D87D2A 100%);
+  color: #081B12;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #081B12;
+}
+::-webkit-scrollbar-thumb {
+  background: #0B2519;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E8A246;
+}
