@@ -10,43 +10,52 @@ const HERO_VIDEOS = [
 ];
 
 export default function HeroSection() {
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const videoRef = useRef(null);
-
-  const handleVideoEnded = () => {
-    setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % HERO_VIDEOS.length);
-  };
+  const videoContainerRef = useRef(null);
 
   useEffect(() => {
-    if (videoRef.current) {
-      // Force iOS requirements via JS to bypass React hydration quirks
-      videoRef.current.muted = true;
-      videoRef.current.setAttribute("playsinline", "");
-      videoRef.current.setAttribute("webkit-playsinline", "");
-      
-      // Play automatically when src changes
-      videoRef.current.play().catch((error) => {
-        console.warn("Autoplay was prevented:", error);
-      });
-    }
-  }, [currentVideoIndex]);
+    const videoContainer = videoContainerRef.current;
+    if (!videoContainer) return;
+
+    const videoEl = videoContainer.querySelector("video");
+    if (!videoEl) return;
+
+    let currentIndex = 0;
+
+    const handleEnded = () => {
+      currentIndex = (currentIndex + 1) % HERO_VIDEOS.length;
+      videoEl.src = HERO_VIDEOS[currentIndex];
+      videoEl.play().catch(() => {});
+    };
+
+    videoEl.addEventListener("ended", handleEnded);
+
+    return () => {
+      videoEl.removeEventListener("ended", handleEnded);
+    };
+  }, []);
 
   return (
     <section className="relative w-full min-h-screen sm:min-h-[750px] overflow-hidden flex items-center justify-center">
-      {/* Background Video Player */}
-      <div className="absolute inset-0 w-full h-full">
-        <video
-          ref={videoRef}
-          src={HERO_VIDEOS[currentVideoIndex]}
-          autoPlay
-          muted
-          defaultMuted
-          playsInline
-          onEnded={handleVideoEnded}
-          poster="/media/golf-hero-1.png"
-          className="w-full h-full object-cover object-center scale-105 transition-all duration-700"
-        />
-        {/* SoCal Golden Hour Dark Gradient Overlays */}
+      {/* Background Video Player - Professional iOS Autoplay Fix via Raw HTML */}
+      <div 
+        ref={videoContainerRef}
+        className="absolute inset-0 w-full h-full"
+        dangerouslySetInnerHTML={{
+          __html: `
+            <video
+              src="${HERO_VIDEOS[0]}"
+              autoplay
+              muted
+              playsinline
+              webkit-playsinline
+              poster="/media/golf-hero-1.png"
+              class="w-full h-full object-cover object-center scale-105 transition-all duration-700"
+            ></video>
+          `
+        }}
+      />
+      {/* SoCal Golden Hour Dark Gradient Overlays */}
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-t from-[#081B12] via-black/40 to-black/70" />
         <div className="absolute inset-0 bg-black/25" />
       </div>
