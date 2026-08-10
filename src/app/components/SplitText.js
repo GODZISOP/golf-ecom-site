@@ -97,8 +97,7 @@ const SplitText = ({
               scrollTrigger: {
                 trigger: el,
                 start,
-                once: false,
-                toggleActions: "play none none reset",
+                once: true,
                 fastScrollEnd: true,
                 anticipatePin: 0.4
               },
