@@ -20,6 +20,10 @@ export default function HeroSection() {
     const videoEl = videoContainer.querySelector("video");
     if (!videoEl) return;
 
+    // Explicitly play on mount
+    videoEl.muted = true;
+    videoEl.play().catch(() => {});
+
     let localIndex = 0;
 
     const handleEnded = () => {
@@ -46,10 +50,10 @@ export default function HeroSection() {
           __html: `
             <video
               src="${HERO_VIDEOS[0]}"
-              autoplay
-              muted
-              playsinline
-              webkit-playsinline
+              autoplay="autoplay"
+              muted="muted"
+              playsinline="playsinline"
+              webkit-playsinline="true"
               poster="/media/golf-hero-1.png"
               class="w-full h-full object-cover object-center scale-105 transition-all duration-700"
             ></video>
