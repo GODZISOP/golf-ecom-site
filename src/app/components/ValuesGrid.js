@@ -1,6 +1,7 @@
 "use client";
 
 import { RotateCcw, Users, HeartHandshake, Gift, Compass, Smile } from "lucide-react";
+import SplitText from "./SplitText";
 
 export default function ValuesGrid() {
   const values = [
@@ -47,15 +48,12 @@ export default function ValuesGrid() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <span className="text-[#E8A246] text-xs font-bold uppercase tracking-[0.3em]">
-            THE FOUNDATION
-          </span>
+          <SplitText text="THE FOUNDATION" tag="span" className="text-[#E8A246] text-xs font-bold uppercase tracking-[0.3em]" delay={30} duration={0.8} />
           <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-black text-white mt-3 mb-6 uppercase leading-tight">
-            WHAT WE <span className="text-[#E8A246] font-serif italic">STAND FOR</span>
+            <SplitText text="WHAT WE " tag="span" delay={30} duration={0.8} />
+            <SplitText text="STAND FOR" tag="span" className="text-[#E8A246] font-serif italic" delay={30} duration={0.8} />
           </h2>
-          <p className="text-gray-300 text-sm md:text-base leading-relaxed font-light">
-            Three Off the Tee exists to bring people together through golf while using our platform to do good along the way.
-          </p>
+          <SplitText text="Three Off the Tee exists to bring people together through golf while using our platform to do good along the way." tag="p" className="text-gray-300 text-sm md:text-base leading-relaxed font-light" splitType="words" delay={15} duration={0.6} />
         </div>
 
         {/* 6 Grid Cards */}
@@ -70,12 +68,21 @@ export default function ValuesGrid() {
                 <div className="w-12 h-12 bg-[#E8A246]/20 text-[#E8A246] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="font-serif text-xl font-bold text-white mb-3 group-hover:text-[#E8A246] transition-colors">
-                  {v.title}
-                </h3>
-                <p className="text-xs text-gray-300 font-light leading-relaxed">
-                  {v.description}
-                </p>
+                <SplitText
+                  text={v.title}
+                  tag="h3"
+                  className="font-serif text-xl font-bold text-white mb-3 group-hover:text-[#E8A246] transition-colors"
+                  delay={30}
+                  duration={0.8}
+                />
+                <SplitText
+                  text={v.description}
+                  tag="p"
+                  className="text-xs text-gray-300 font-light leading-relaxed"
+                  splitType="words"
+                  delay={15}
+                  duration={0.6}
+                />
               </div>
             );
           })}
