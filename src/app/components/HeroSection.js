@@ -17,16 +17,12 @@ export default function HeroSection() {
     setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % HERO_VIDEOS.length);
   };
 
-  const isFirstRender = useRef(true);
-
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
     if (videoRef.current) {
-      videoRef.current.load();
-      videoRef.current.play().catch(() => {});
+      // Play automatically when src changes (do NOT call .load() as it delays playback)
+      videoRef.current.play().catch((error) => {
+        console.warn("Autoplay was prevented:", error);
+      });
     }
   }, [currentVideoIndex]);
 
@@ -39,6 +35,7 @@ export default function HeroSection() {
           src={HERO_VIDEOS[currentVideoIndex]}
           autoPlay
           muted
+          defaultMuted
           playsInline
           onEnded={handleVideoEnded}
           poster="/media/golf-hero-1.png"
