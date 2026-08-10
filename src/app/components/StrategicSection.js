@@ -1,5 +1,54 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
+import { useInView, useMotionValue, useSpring } from "framer-motion";
+
+function AnimatedCounter({ value }) {
+  const match = value.match(/^(\D*)(\d+)(\D*)$/);
+  const target = match ? parseInt(match[2], 10) : 0;
+  const prefix = match ? match[1] : "";
+  const suffix = match ? match[3] : "";
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, margin: "-50px" });
+  
+  // For small numbers like 2, 1, 0 on the right side, starting from 0 means they barely animate or don't animate at all.
+  // We set the initial value to 25 for these small numbers so they count DOWN to the target, giving a nice running effect.
+  const initialValue = target <= 5 ? 25 : 0;
+  const motionValue = useMotionValue(initialValue);
+  
+  // duration is in milliseconds for useSpring in framer-motion
+  const springValue = useSpring(motionValue, { duration: 1500, bounce: 0 });
+  const [displayValue, setDisplayValue] = useState(initialValue);
+
+  useEffect(() => {
+    if (isInView) {
+      motionValue.set(target);
+    } else {
+      motionValue.set(initialValue);
+    }
+  }, [isInView, target, motionValue, initialValue]);
+
+  useEffect(() => {
+    const unsubscribe = springValue.on("change", (latest) => {
+      setDisplayValue(latest);
+    });
+    return unsubscribe;
+  }, [springValue]);
+
+  if (!match) {
+    return <span>{value}</span>;
+  }
+
+  return (
+    <span ref={ref}>
+      {prefix}
+      {Math.round(displayValue)}
+      {suffix}
+    </span>
+  );
+}
+
 export default function StrategicSection() {
   const leftStats = [
     {
@@ -72,7 +121,7 @@ export default function StrategicSection() {
             {leftStats.map((stat, i) => (
               <div key={i} className="group relative">
                 <div className="font-serif text-4xl sm:text-5xl font-extrabold text-[#E8A246] group-hover:text-white transition-colors leading-none drop-shadow-lg">
-                  {stat.number}
+                  <AnimatedCounter value={stat.number} />
                 </div>
                 <div className="text-xs sm:text-sm font-semibold text-gray-200 tracking-wider uppercase mt-1 mb-2">
                   {stat.label}
@@ -103,7 +152,7 @@ export default function StrategicSection() {
             {rightStats.map((stat, i) => (
               <div key={i} className="group relative">
                 <div className="font-serif text-4xl sm:text-5xl font-extrabold text-[#E8A246] group-hover:text-white transition-colors leading-none drop-shadow-lg">
-                  {stat.number}
+                  <AnimatedCounter value={stat.number} />
                 </div>
                 <div className="text-xs sm:text-sm font-semibold text-gray-200 tracking-wider uppercase mt-1 mb-2">
                   {stat.label}
