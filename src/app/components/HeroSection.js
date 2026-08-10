@@ -19,7 +19,12 @@ export default function HeroSection() {
 
   useEffect(() => {
     if (videoRef.current) {
-      // Play automatically when src changes (do NOT call .load() as it delays playback)
+      // Force iOS requirements via JS to bypass React hydration quirks
+      videoRef.current.muted = true;
+      videoRef.current.setAttribute("playsinline", "");
+      videoRef.current.setAttribute("webkit-playsinline", "");
+      
+      // Play automatically when src changes
       videoRef.current.play().catch((error) => {
         console.warn("Autoplay was prevented:", error);
       });
