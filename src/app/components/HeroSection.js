@@ -10,6 +10,7 @@ const HERO_VIDEOS = [
 ];
 
 export default function HeroSection() {
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const videoContainerRef = useRef(null);
 
   useEffect(() => {
@@ -19,11 +20,12 @@ export default function HeroSection() {
     const videoEl = videoContainer.querySelector("video");
     if (!videoEl) return;
 
-    let currentIndex = 0;
+    let localIndex = 0;
 
     const handleEnded = () => {
-      currentIndex = (currentIndex + 1) % HERO_VIDEOS.length;
-      videoEl.src = HERO_VIDEOS[currentIndex];
+      localIndex = (localIndex + 1) % HERO_VIDEOS.length;
+      setCurrentVideoIndex(localIndex);
+      videoEl.src = HERO_VIDEOS[localIndex];
       videoEl.play().catch(() => {});
     };
 
