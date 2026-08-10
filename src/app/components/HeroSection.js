@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Volume2, VolumeX, ArrowDown, Play, Pause, RotateCcw } from "lucide-react";
+import { ArrowDown, RotateCcw } from "lucide-react";
 import SplitText from "./SplitText";
 
 const HERO_VIDEOS = [
@@ -10,28 +10,8 @@ const HERO_VIDEOS = [
 ];
 
 export default function HeroSection() {
-  const [isMuted, setIsMuted] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(true);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const videoRef = useRef(null);
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
-  };
-
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
 
   const handleVideoEnded = () => {
     setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % HERO_VIDEOS.length);
@@ -41,7 +21,6 @@ export default function HeroSection() {
     if (videoRef.current) {
       videoRef.current.load();
       videoRef.current.play().catch(() => {});
-      setIsPlaying(true);
     }
   }, [currentVideoIndex]);
 
@@ -53,7 +32,7 @@ export default function HeroSection() {
           ref={videoRef}
           src={HERO_VIDEOS[currentVideoIndex]}
           autoPlay
-          muted={isMuted}
+          muted
           playsInline
           onEnded={handleVideoEnded}
           poster="/media/golf-hero-1.png"
@@ -127,23 +106,7 @@ export default function HeroSection() {
             ))}
           </div>
 
-          {/* Sound & Pause Controls */}
           <div className="flex items-center gap-4">
-            <button
-              onClick={togglePlay}
-              aria-label="Play/Pause Video"
-              className="p-3 bg-black/60 hover:bg-[#14422D] border border-white/20 hover:border-[#E8A246] rounded-full text-white transition-all backdrop-blur-md"
-            >
-              {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
-            </button>
-            <button
-              onClick={toggleMute}
-              aria-label="Mute/Unmute Video"
-              className="p-3 bg-black/60 hover:bg-[#14422D] border border-white/20 hover:border-[#E8A246] rounded-full text-white transition-all backdrop-blur-md"
-            >
-              {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-[#E8A246]" />}
-            </button>
-
             <a
               href="#meaning"
               aria-label="Scroll Down"
