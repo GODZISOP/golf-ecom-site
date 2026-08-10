@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Volume2, VolumeX, ArrowDown, Play, Pause, RotateCcw } from "lucide-react";
+import SplitText from "./SplitText";
 
 const HERO_VIDEOS = [
   "/media/hero-video-1.mp4",
@@ -74,13 +75,20 @@ export default function HeroSection() {
 
           {/* Large Title */}
           <h1 className="font-serif text-3xl sm:text-6xl md:text-8xl lg:text-[88px] font-bold text-[#E8A246] leading-[1.05] sm:leading-[0.95] tracking-tight uppercase mb-4 sm:mb-6 drop-shadow-2xl">
-            THREE OFF THE TEE <br />
-            <span className="text-white font-serif font-extrabold italic">SECOND CHANCES</span> START HERE
+            <SplitText text="THREE OFF THE TEE" tag="span" delay={30} duration={0.8} />
+            <br />
+            <SplitText text="SECOND CHANCES" tag="span" className="text-white font-serif font-extrabold italic" delay={30} duration={0.8} />
+            <SplitText text=" START HERE" tag="span" delay={30} duration={0.8} />
           </h1>
 
-          <p className="text-gray-200 text-xs sm:text-base md:text-xl font-light max-w-2xl leading-relaxed mb-5 sm:mb-8 drop-shadow">
-            Southern California golf lifestyle brand built on second chances, good people, and the belief that golf is about much more than the scorecard.
-          </p>
+          <SplitText
+            text="Southern California golf lifestyle brand built on second chances, good people, and the belief that golf is about much more than the scorecard."
+            tag="p"
+            className="text-gray-200 text-xs sm:text-base md:text-xl font-light max-w-2xl leading-relaxed mb-5 sm:mb-8 drop-shadow"
+            splitType="words"
+            delay={15}
+            duration={0.6}
+          />
 
           {/* Primary CTAs */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 mb-4 sm:mb-0">

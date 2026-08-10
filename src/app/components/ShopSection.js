@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Star, ShoppingCart, Eye, ArrowUpDown, ChevronRight } from "lucide-react";
+import SplitText from "./SplitText";
 
 const THREE_OFF_TEE_PRODUCTS = [
   {
@@ -112,15 +113,9 @@ export default function ShopSection({ onAddToCart, onQuickView }) {
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-[#E8A246]/20 pb-8">
         <div>
-          <span className="text-[#E8A246] text-xs font-bold uppercase tracking-[0.3em]">
-            CALIFORNIA GOLF APPAREL
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-black text-white mt-2 uppercase">
-            SHOP THE COLLECTION
-          </h2>
-          <p className="text-gray-300 text-xs sm:text-sm max-w-xl mt-2 font-light">
-            Headwear, polos, and apparel designed to feel premium, casual, and proud to wear on and off the course.
-          </p>
+          <SplitText text="CALIFORNIA GOLF APPAREL" tag="span" className="text-[#E8A246] text-xs font-bold uppercase tracking-[0.3em]" delay={30} duration={0.8} />
+          <SplitText text="SHOP THE COLLECTION" tag="h2" className="font-serif text-3xl sm:text-4xl md:text-5xl font-black text-white mt-2 uppercase" delay={30} duration={0.8} />
+          <SplitText text="Headwear, polos, and apparel designed to feel premium, casual, and proud to wear on and off the course." tag="p" className="text-gray-300 text-xs sm:text-sm max-w-xl mt-2 font-light" splitType="words" delay={15} duration={0.6} />
         </div>
 
         {/* Category Tabs */}

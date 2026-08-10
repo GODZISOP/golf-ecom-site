@@ -1,6 +1,7 @@
 "use client";
 
 import { Flame, ShieldCheck, HeartHandshake, Compass } from "lucide-react";
+import SplitText from "./SplitText";
 
 export default function OurStorySection() {
   return (
@@ -20,41 +21,71 @@ export default function OurStorySection() {
             <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 bg-[#0B2519]/90 border border-[#E8A246]/40 backdrop-blur-md p-4 sm:p-6 rounded-2xl">
               <div className="flex items-center gap-2 sm:gap-3 text-[#E8A246] mb-1">
                 <Flame className="w-4 sm:w-5 h-4 sm:h-5 text-[#E8A246] shrink-0" />
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest">
-                  FOUNDED BY L.A. COUNTY FIREFIGHTER
-                </span>
+                <SplitText
+                  text="FOUNDED BY L.A. COUNTY FIREFIGHTER"
+                  tag="span"
+                  className="text-[10px] sm:text-xs font-bold uppercase tracking-widest"
+                  delay={20}
+                  duration={0.6}
+                />
               </div>
-              <h4 className="font-serif text-lg sm:text-xl font-black text-white">JAKE RADEN</h4>
-              <p className="text-xs text-gray-300 mt-1">
-                “Sometimes life doesn’t go according to plan. You regroup, learn, reload, and take another swing.”
-              </p>
+              <SplitText text="JAKE RADEN" tag="h4" className="font-serif text-lg sm:text-xl font-black text-white" delay={30} duration={0.8} />
+              <SplitText
+                text="“Sometimes life doesn’t go according to plan. You regroup, learn, reload, and take another swing.”"
+                tag="p"
+                className="text-xs text-gray-300 mt-1"
+                splitType="words"
+                delay={15}
+                duration={0.6}
+              />
             </div>
           </div>
         </div>
 
         {/* Right Column Story Narrative */}
         <div className="lg:col-span-7 space-y-6">
-          <span className="text-[#E8A246] text-xs font-bold uppercase tracking-[0.3em]">
-            THE STORY BEHIND THE BRAND
-          </span>
+          <SplitText
+            text="THE STORY BEHIND THE BRAND"
+            tag="span"
+            className="text-[#E8A246] text-xs font-bold uppercase tracking-[0.3em]"
+            delay={30}
+            duration={0.8}
+          />
           <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-black text-white leading-tight">
-            SECOND CHANCES <br />
-            <span className="text-[#E8A246] italic font-serif">ON & OFF THE TEE</span>
+            <SplitText text="SECOND CHANCES" tag="span" delay={30} duration={0.8} />
+            <br />
+            <SplitText text="ON & OFF THE TEE" tag="span" className="text-[#E8A246] italic font-serif" delay={30} duration={0.8} />
           </h2>
 
           <div className="space-y-4 text-gray-300 text-sm leading-relaxed font-light">
-            <p>
-              Three Off the Tee started with a simple idea: golf doesn’t have to be perfect to be meaningful.
-            </p>
-            <p>
-              Founded by Los Angeles County firefighter Jake Raden, golf became much more than a hobby through major changes in life. It became a constant — somewhere to clear his head, reconnect with family and friends, meet new people, and appreciate the moment.
-            </p>
-            <p>
-              The phrase <strong className="text-white font-semibold">“Three Off the Tee”</strong> captured the humor of the game, but also represented something Jake had experienced personally: your first shot doesn’t have to define the hole — and your worst moment doesn’t have to define your life.
-            </p>
-            <p>
-              What started as an idea and a few hats has grown into a Southern California community centered around golf, friendship, second chances, charitable events, and bringing people together.
-            </p>
+            <SplitText
+              text="Three Off the Tee started with a simple idea: golf doesn’t have to be perfect to be meaningful."
+              tag="p"
+              splitType="words"
+              delay={15}
+              duration={0.6}
+            />
+            <SplitText
+              text="Founded by Los Angeles County firefighter Jake Raden, golf became much more than a hobby through major changes in life. It became a constant — somewhere to clear his head, reconnect with family and friends, meet new people, and appreciate the moment."
+              tag="p"
+              splitType="words"
+              delay={15}
+              duration={0.6}
+            />
+            <SplitText
+              text="The phrase “Three Off the Tee” captured the humor of the game, but also represented something Jake had experienced personally: your first shot doesn’t have to define the hole — and your worst moment doesn’t have to define your life."
+              tag="p"
+              splitType="words"
+              delay={15}
+              duration={0.6}
+            />
+            <SplitText
+              text="What started as an idea and a few hats has grown into a Southern California community centered around golf, friendship, second chances, charitable events, and bringing people together."
+              tag="p"
+              splitType="words"
+              delay={15}
+              duration={0.6}
+            />
           </div>
 
           {/* Core Values Quick Row */}

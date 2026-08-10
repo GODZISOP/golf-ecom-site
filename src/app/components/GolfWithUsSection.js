@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Calendar, MapPin, Users, CheckCircle, Ticket, Play } from "lucide-react";
+import SplitText from "./SplitText";
 
 export default function GolfWithUsSection() {
   const [registered, setRegistered] = useState(false);
@@ -20,16 +21,13 @@ export default function GolfWithUsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <span className="text-[#E8A246] text-xs font-bold uppercase tracking-[0.3em]">
-            COMMUNITY & EVENTS
-          </span>
+          <SplitText text="COMMUNITY & EVENTS" tag="span" className="text-[#E8A246] text-xs font-bold uppercase tracking-[0.3em]" delay={30} duration={0.8} />
           <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-black text-white mt-3 mb-6 uppercase leading-tight">
-            GOLF WITH US <br />
-            <span className="text-[#E8A246] font-serif italic">COMMUNITY OUTINGS</span>
+            <SplitText text="GOLF WITH US" tag="span" delay={30} duration={0.8} />
+            <br />
+            <SplitText text="COMMUNITY OUTINGS" tag="span" className="text-[#E8A246] font-serif italic" delay={30} duration={0.8} />
           </h2>
-          <p className="text-gray-300 text-sm md:text-base leading-relaxed font-light">
-            Connecting golfers who otherwise may never have met. Come hit shots, laugh at bad ones, support charity causes, and enjoy a cold beer.
-          </p>
+          <SplitText text="Connecting golfers who otherwise may never have met. Come hit shots, laugh at bad ones, support charity causes, and enjoy a cold beer." tag="p" className="text-gray-300 text-sm md:text-base leading-relaxed font-light" splitType="words" delay={15} duration={0.6} />
         </div>
 
         {/* Video Feature Community Hero Banner */}
