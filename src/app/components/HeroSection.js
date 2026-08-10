@@ -17,7 +17,13 @@ export default function HeroSection() {
     setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % HERO_VIDEOS.length);
   };
 
+  const isFirstRender = useRef(true);
+
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     if (videoRef.current) {
       videoRef.current.load();
       videoRef.current.play().catch(() => {});
