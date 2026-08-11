@@ -7,7 +7,7 @@ export default function CraftsmanshipSection() {
     <section id="community" className="py-24 bg-gradient-to-b from-[#06150D] via-[#0A2F1D]/40 to-[#06150D] text-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-16">
           <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em]">
             THE HOOK STANDARDS
           </span>
