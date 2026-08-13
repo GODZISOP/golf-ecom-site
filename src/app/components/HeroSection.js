@@ -5,7 +5,7 @@ import { ArrowDown, RotateCcw } from "lucide-react";
 import SplitText from "./SplitText";
 
 const HERO_VIDEOS = [
-  "/media/hero-video-1.mp4",
+  "/media/Golfer_swings_golf_club_202608131950.mp4",
   "/media/hero-video-2.mp4"
 ];
 
