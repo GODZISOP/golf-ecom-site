@@ -9,16 +9,16 @@ export default function OurStorySection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
         {/* Left Column Image / Founder Card */}
         <div className="lg:col-span-5 relative">
-          <div className="relative rounded-3xl overflow-hidden border-2 border-[#E8A246]/40 shadow-2xl group max-w-sm sm:max-w-md lg:max-w-none mx-auto">
+          <div className="relative rounded-3xl overflow-hidden border-2 border-[#E8A246]/40 shadow-2xl group max-w-sm sm:max-w-md lg:max-w-none mx-auto bg-[#06150D]">
+            {/* Main Founder Image - Full Natural Ratio without any cropping */}
             <img
-              src="/media/image copy 2.png"
+              src="/media/image copy 8.png"
               alt="LA County Firefighter Jake Raden Founder"
-              className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+              className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700 block"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#081B12] via-transparent to-transparent" />
 
-            {/* Badge Overlay */}
-            <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 bg-[#0B2519]/90 border border-[#E8A246]/40 backdrop-blur-md p-4 sm:p-6 rounded-2xl">
+            {/* Badge Overlay below image so no part of the photo or stick is covered */}
+            <div className="bg-[#0B2519]/95 border-t border-[#E8A246]/40 p-4 sm:p-6 backdrop-blur-md">
               <div className="flex items-center gap-2 sm:gap-3 text-[#E8A246] mb-1">
                 <Flame className="w-4 sm:w-5 h-4 sm:h-5 text-[#E8A246] shrink-0" />
                 <SplitText
@@ -108,3 +108,5 @@ export default function OurStorySection() {
     </section>
   );
 }
+
+
