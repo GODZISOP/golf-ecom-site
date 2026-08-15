@@ -5,36 +5,43 @@ import { ArrowDown, RotateCcw } from "lucide-react";
 import SplitText from "./SplitText";
 
 const HERO_VIDEOS = [
-  "/media/Golfer_swings_golf_club_202608131950.mp4",
-  "/media/hero-video-2.mp4"
+  "/media/desert-woman-cap.mp4",
+  "/media/desert-character-walk.mp4"
 ];
 
 export default function HeroSection() {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const videoContainerRef = useRef(null);
+  const videoRef = useRef(null);
+
+  const changeVideo = (index) => {
+    setCurrentVideoIndex(index);
+    if (videoRef.current) {
+      videoRef.current.src = HERO_VIDEOS[index];
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(() => {});
+    }
+  };
 
   useEffect(() => {
-    const videoContainer = videoContainerRef.current;
-    if (!videoContainer) return;
-
-    const videoEl = videoContainer.querySelector("video");
+    const videoEl = videoRef.current;
     if (!videoEl) return;
 
-    // Explicitly play on mount
     videoEl.muted = true;
     videoEl.play().catch(() => {});
 
-    let localIndex = 0;
-
     const handleEnded = () => {
-      localIndex = (localIndex + 1) % HERO_VIDEOS.length;
-      setCurrentVideoIndex(localIndex);
-      videoEl.src = HERO_VIDEOS[localIndex];
-      videoEl.play().catch(() => {});
+      setCurrentVideoIndex((prev) => {
+        const next = (prev + 1) % HERO_VIDEOS.length;
+        if (videoRef.current) {
+          videoRef.current.src = HERO_VIDEOS[next];
+          videoRef.current.muted = true;
+          videoRef.current.play().catch(() => {});
+        }
+        return next;
+      });
     };
 
     videoEl.addEventListener("ended", handleEnded);
-
     return () => {
       videoEl.removeEventListener("ended", handleEnded);
     };
@@ -42,24 +49,18 @@ export default function HeroSection() {
 
   return (
     <section className="relative w-full min-h-screen sm:min-h-[750px] overflow-hidden flex items-center justify-center">
-      {/* Background Video Player - Professional iOS Autoplay Fix via Raw HTML */}
-      <div 
-        ref={videoContainerRef}
-        className="absolute inset-0 w-full h-full"
-        dangerouslySetInnerHTML={{
-          __html: `
-            <video
-              src="${HERO_VIDEOS[0]}"
-              autoplay="autoplay"
-              muted="muted"
-              playsinline="playsinline"
-              webkit-playsinline="true"
-              poster="/media/golf-hero-1.png"
-              class="w-full h-full object-cover object-center scale-105 transition-all duration-700"
-            ></video>
-          `
-        }}
-      />
+      {/* Background Video Player */}
+      <div className="absolute inset-0 w-full h-full bg-[#081B12]">
+        <video
+          ref={videoRef}
+          src={HERO_VIDEOS[0]}
+          autoPlay
+          muted
+          playsInline
+          poster="/media/golf-hero-1.png"
+          className="w-full h-full object-cover object-[center_30%] sm:object-[center_35%] transition-all duration-700"
+        />
+      </div>
       {/* SoCal Golden Hour Dark Gradient Overlays */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-t from-[#081B12] via-black/40 to-black/70" />
@@ -118,12 +119,14 @@ export default function HeroSection() {
           {/* Video Indicator */}
           <div className="flex items-center gap-2">
             {HERO_VIDEOS.map((_, index) => (
-              <span
+              <button
                 key={index}
-                className={`h-1.5 rounded-full transition-all duration-500 ${
+                onClick={() => changeVideo(index)}
+                aria-label={`Switch to video ${index + 1}`}
+                className={`h-2 rounded-full transition-all duration-500 cursor-pointer ${
                   currentVideoIndex === index
                     ? "w-8 bg-[#E8A246]"
-                    : "w-2 bg-white/30"
+                    : "w-2.5 bg-white/40 hover:bg-white/70"
                 }`}
               />
             ))}

@@ -63,12 +63,12 @@ export default function CraftsmanshipSection() {
         <div className="relative rounded-3xl overflow-hidden border border-[#D4AF37]/30 shadow-2xl">
           <div className="absolute inset-0 z-0">
             <video
-              src="/media/hero-video-2.mp4"
+              src="/media/desert-woman-cap.mp4"
               autoPlay
               loop
               muted
               playsInline
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-[center_25%]"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#06150D] via-[#06150D]/80 to-transparent" />
           </div>

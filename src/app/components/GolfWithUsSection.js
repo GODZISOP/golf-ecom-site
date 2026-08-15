@@ -34,12 +34,12 @@ export default function GolfWithUsSection() {
         <div className="relative rounded-3xl overflow-hidden border border-[#E8A246]/40 shadow-2xl mb-16 min-h-[460px] sm:min-h-[420px] flex items-center">
           <div className="absolute inset-0 z-0">
             <video
-              src="/media/hero-video-2.mp4"
+              src="/media/desert-character-walk.mp4"
               autoPlay
               loop
               muted
               playsInline
-              className="w-full h-full object-cover filter brightness-90"
+              className="w-full h-full object-cover object-[center_30%] filter brightness-90"
             />
             <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-[#081B12] via-[#081B12]/85 to-[#081B12]/40" />
           </div>
