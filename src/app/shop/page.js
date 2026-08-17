@@ -2,112 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Star, ShoppingCart, Eye, ArrowUpDown, Search, Flame, ArrowLeft, Filter } from "lucide-react";
+import { Star, ShoppingCart, ArrowUpDown, Search, Flame, ArrowLeft, ArrowRight } from "lucide-react";
 import Navbar from "../components/Navbar";
 import CartDrawer from "../components/CartDrawer";
-import ProductQuickView from "../components/ProductQuickView";
 import Footer from "../components/Footer";
+import { PRODUCTS } from "../data/products";
 
-const ALL_SHOP_PRODUCTS = [
-  {
-    id: "hat-original-gold",
-    name: "Three Off the Tee Signature Snapback",
-    category: "headwear",
-    type: "Hats",
-    price: 36,
-    originalPrice: 42,
-    rating: 5.0,
-    reviews: 184,
-    image: "/media/image copy.png",
-    badge: "BEST SELLER",
-    specs: "Structured 6-Panel • Premium Patch • Moisture-Wicking Sweatband",
-    description: "The original headwear that started it all. Wear the logo proudly — and represent permission to reload.",
-  },
-  {
-    id: "hat-royal-crest",
-    name: "Three Off the Tee Crest Royal Snapback",
-    category: "headwear",
-    type: "Hats",
-    price: 36,
-    originalPrice: 42,
-    rating: 4.9,
-    reviews: 88,
-    image: "/media/image copy 7.png",
-    badge: "NEW RELEASE",
-    specs: "Structured High-Crown • Royal Blue • Embroidered Golf Crest",
-    description: "Royal blue high-crown snapback cap featuring the classic 3 Off the Tee crest logo embroidered on the front.",
-  },
-  {
-    id: "la-fire-station-16",
-    name: "L.A. County Fire Dept. Station 16 Cap",
-    category: "headwear",
-    type: "Hats",
-    price: 38,
-    originalPrice: 45,
-    rating: 5.0,
-    reviews: 110,
-    image: "/media/image copy 5.png",
-    badge: "LIMITED RELEASE",
-    specs: "Laser Perforated Mesh • High Density Embroidery • Firefighter Edition",
-    description: "Special L.A. County Fire Dept. Station 16 edition snapback built for California fairways.",
-  },
-  {
-    id: "polo-socal-breathable",
-    name: "Mulligan Performance Tech Polo",
-    category: "apparel",
-    type: "Polos",
-    price: 78,
-    originalPrice: 88,
-    rating: 4.9,
-    reviews: 92,
-    image: "/media/image copy 4.png",
-    badge: "CALIFORNIA LIFESTYLE",
-    specs: "4-Way Stretch • UPF 50+ Sun Protection • Antimicrobial Fabric",
-    description: "Ultra-comfortable SoCal fairway polo designed for casual weekend rounds and beers at the 19th hole.",
-  },
-  {
-    id: "tee-reload-firefighter",
-    name: "Reload & Swing Again Heavyweight Tee",
-    category: "apparel",
-    type: "T-Shirts",
-    price: 34,
-    originalPrice: 40,
-    rating: 4.8,
-    reviews: 140,
-    image: "/media/image copy 6.png",
-    badge: "FIREFIGHTER EDITION",
-    specs: "100% Combed Ring-Spun Cotton • Vintage Wash • Relaxed Fit",
-    description: "Casual everyday lifestyle tee celebrating second chances and reloading off the first tee.",
-  },
-  {
-    id: "hat-visor-golden",
-    name: "Second Chance Tour Visor Hat",
-    category: "headwear",
-    type: "Hats",
-    price: 38,
-    originalPrice: 44,
-    rating: 4.7,
-    reviews: 62,
-    image: "/media/image copy 3.png",
-    badge: "NEW ARRIVAL",
-    specs: "High-Crown Design • Metal Buckle Closure • Breathable Mesh",
-    description: "Classic high-crown golf visor built for sunny California fairways and relaxed weekend scrambles.",
-  },
-  {
-    id: "hat-sunset-golden",
-    name: "3 Off the Tee Sunset Hour Snapback",
-    category: "headwear",
-    type: "Hats",
-    price: 36,
-    originalPrice: 42,
-    rating: 4.9,
-    reviews: 75,
-    image: "/media/image.png",
-    badge: "GOLDEN HOUR",
-    specs: "Lifestyle Fit • Breathable Mesh • Classic Patch",
-    description: "Designed for California sunsets, post-round drinks, and casual fairways.",
-  },
-];
 
 export default function FullShopPage() {
   const [cartItems, setCartItems] = useState([]);
@@ -150,7 +50,7 @@ export default function FullShopPage() {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
-  const filteredProducts = ALL_SHOP_PRODUCTS.filter((product) => {
+  const filteredProducts = PRODUCTS.filter((product) => {
     const matchesCategory =
       selectedCategory === "all" || product.category === selectedCategory;
     const matchesSearch =
@@ -278,29 +178,20 @@ export default function FullShopPage() {
                   </span>
                 )}
 
-                {/* Product Image Container */}
-                <div className="relative aspect-4/3 w-full bg-black/40 overflow-hidden flex items-center justify-center p-4">
+                {/* Product Image Link Container */}
+                <Link href={`/product/${product.id}`} className="relative aspect-4/3 w-full bg-black/40 overflow-hidden flex items-center justify-center p-4 block cursor-pointer">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className={`w-full h-full rounded-xl transition-transform duration-500 ${
-                      product.image.includes("image copy 5.png")
-                        ? "object-contain scale-125 group-hover:scale-130"
-                        : product.image.includes("image copy 7.png")
-                        ? "object-contain p-1 scale-105 group-hover:scale-110"
-                        : "object-cover group-hover:scale-105"
-                    }`}
+                    className="w-full h-full rounded-xl transition-transform duration-500 object-contain p-1 scale-105 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
-                    <button
-                      onClick={() => setQuickViewProduct(product)}
-                      className="bg-white/90 hover:bg-[#E8A246] text-black p-3 rounded-full transition-all shadow-lg transform translate-y-4 group-hover:translate-y-0"
-                      aria-label="Quick View"
-                    >
-                      <Eye className="w-5 h-5" />
-                    </button>
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="bg-[#E8A246] text-[#081B12] font-black text-xs uppercase tracking-wider px-5 py-2.5 rounded-full shadow-lg flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                      <span>VIEW DETAILS</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </span>
                   </div>
-                </div>
+                </Link>
 
                 {/* Content Details */}
                 <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
@@ -316,9 +207,11 @@ export default function FullShopPage() {
                       </div>
                     </div>
 
-                    <h3 className="font-serif text-lg sm:text-xl font-bold text-white group-hover:text-[#E8A246] transition-colors mb-2">
-                      {product.name}
-                    </h3>
+                    <Link href={`/product/${product.id}`}>
+                      <h3 className="font-serif text-lg sm:text-xl font-bold text-white group-hover:text-[#E8A246] transition-colors mb-2">
+                        {product.name}
+                      </h3>
+                    </Link>
                     <p className="text-xs text-gray-300 font-light mb-4 line-clamp-2">{product.specs}</p>
                   </div>
 
@@ -360,12 +253,7 @@ export default function FullShopPage() {
         onClearCart={() => setCartItems([])}
       />
 
-      {/* Quick View Modal */}
-      <ProductQuickView
-        product={quickViewProduct}
-        onClose={() => setQuickViewProduct(null)}
-        onAddToCart={handleAddToCart}
-      />
+
 
       {/* Footer */}
       <Footer />

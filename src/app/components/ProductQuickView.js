@@ -27,10 +27,8 @@ export default function ProductQuickView({ product, onClose, onAddToCart }) {
             src={product.image}
             alt={product.name}
             className={`w-full h-auto max-h-[380px] rounded-xl shadow-2xl ${
-              product.image.includes("image copy 5.png")
-                ? "object-contain p-2 scale-125"
-                : product.image.includes("image copy 7.png")
-                ? "object-contain p-4"
+              product.image.includes("image copy 7.png") || product.image.includes("image copy 9.png")
+                ? "object-contain p-4 scale-105"
                 : "object-cover"
             }`}
           />

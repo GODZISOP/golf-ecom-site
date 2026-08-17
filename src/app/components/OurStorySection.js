@@ -12,9 +12,9 @@ export default function OurStorySection() {
           <div className="relative rounded-3xl overflow-hidden border-2 border-[#E8A246]/40 shadow-2xl group max-w-sm sm:max-w-md lg:max-w-none mx-auto bg-[#06150D]">
             {/* Main Founder Image - Full Natural Ratio without any cropping */}
             <img
-              src="/media/image copy 8.png"
-              alt="LA County Firefighter Jake Raden Founder"
-              className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700 block"
+              src="/media/image copy 10.png"
+              alt="LA County Firefighter Jake Raden Founder - Three Off the Tee Golf"
+              className="w-full h-auto max-h-[520px] object-cover group-hover:scale-105 transition-transform duration-700 block rounded-t-3xl"
             />
 
             {/* Badge Overlay below image so no part of the photo or stick is covered */}
